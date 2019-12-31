@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.smbms.dao.BillMapper">
+  <resultMap id="BillMap" type="cn.smbms.pojo.Bill" autoMapping="true">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="billCode" jdbcType="VARCHAR" property="billcode" />
+    <result column="productName" jdbcType="VARCHAR" property="productname" />
+    <result column="productDesc" jdbcType="VARCHAR" property="productdesc" />
+    <result column="productUnit" jdbcType="VARCHAR" property="productunit" />
+    <result column="productCount" jdbcType="DECIMAL" property="productcount" />
+    <result column="totalPrice" jdbcType="DECIMAL" property="totalprice" />
+    <result column="isPayment" jdbcType="INTEGER" property="ispayment" />
+    <result column="createdBy" jdbcType="BIGINT" property="createdby" />
+    <result column="creationDate" jdbcType="TIMESTAMP" property="creationdate" />
+    <result column="modifyBy" jdbcType="BIGINT" property="modifyby" />
+    <result column="modifyDate" jdbcType="TIMESTAMP" property="modifydate" />
+    <result column="providerId" jdbcType="BIGINT" property="providerid" />
+    <association property="provider" javaType="Provider" autoMapping="true">
+      <id column="providerId" property="id"/>
+      <result column="proCode" jdbcType="VARCHAR" property="procode" />
+      <result column="proName" jdbcType="VARCHAR" property="proname" />
+      <result column="proDesc" jdbcType="VARCHAR" property="prodesc" />
+      <result column="proContact" jdbcType="VARCHAR" property="procontact" />
+      <result column="proPhone" jdbcType="VARCHAR" property="prophone" />
+      <result column="proAddress" jdbcType="VARCHAR" property="proaddress" />
+      <result column="proFax" jdbcType="VARCHAR" property="profax" />
+      <result column="createdBy" jdbcType="BIGINT" property="createdby" />
+      <result column="creationDate" jdbcType="TIMESTAMP" property="creationdate" />
+      <result column="modifyDate" jdbcType="TIMESTAMP" property="modifydate" />
+      <result column="modifyBy" jdbcType="BIGINT" property="modifyby" />
+    </association>
+  </resultMap>
+</mapper>
