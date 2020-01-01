@@ -33,18 +33,19 @@ public class ProviderController {
     }
 
     @RequestMapping("/providermodify")
-    public String providerModify(HttpSession session,Long proid){
+    public String providerModify(HttpSession session, Long proid) {
         Provider provider = providerService.selectById(proid);
-        session.setAttribute("provider",provider);
+        session.setAttribute("provider", provider);
         return "pro/providermodify";
     }
 
     @RequestMapping("/providermodifysave")
-    public String providerModifySave(Provider provider){
+    public String providerModifySave(Provider provider) {
         Integer i = providerService.updateById(provider);
-        if(i>0){
+        if (i > 0) {
             return "redirect:/sys/bill";
+        } else {
+            return "redirect:/sys/providermodify";
         }
-        return null;
     }
 }
