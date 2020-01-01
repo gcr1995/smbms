@@ -40,4 +40,14 @@ public class ProviderServiceImpl implements ProviderService {
     public Integer updateById(Provider provider) {
         return providerMapper.updateById(provider);
     }
+
+    @Override
+    public Integer deleteById(Long id) {
+        return providerMapper.deleteById(id);
+    }
+
+    @Override
+    public Integer insert(Provider provider) {
+        return providerMapper.insert(provider);
+    }
 }

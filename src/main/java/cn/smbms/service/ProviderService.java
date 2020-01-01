@@ -12,4 +12,8 @@ public interface ProviderService {
     Provider selectById(Long id);
 
     Integer updateById(Provider provider);
+
+    Integer deleteById(Long id);
+
+    Integer insert(Provider provider);
 }

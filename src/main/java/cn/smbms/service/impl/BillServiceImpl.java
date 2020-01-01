@@ -62,4 +62,9 @@ public class BillServiceImpl implements BillService {
     public Integer deleteById(Long id) {
         return billMapper.deleteById(id);
     }
+
+    @Override
+    public List<Bill> selectByProviderId(Long providerId) {
+        return billMapper.selectList(new EntityWrapper<Bill>().eq("providerId", providerId));
+    }
 }
