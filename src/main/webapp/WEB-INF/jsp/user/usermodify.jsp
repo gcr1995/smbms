@@ -9,10 +9,10 @@
         <div class="providerAdd">
         <form id="userForm" name="userForm" method="post" action="${path}/sys/modifyusersave">
 			<input type="hidden" name="method" value="modifyexe">
-			<input type="hidden" name="uid" value="${user.id }"/>
+			<input type="hidden" name="id" value="${user.id }"/>
 			 <div>
                     <label for="userName">用户名称：</label>
-                    <input type="text" name="userName" id="userName" value="${user.username }"> 
+                    <input type="text" name="username" id="userName" value="${user.username }">
 					<font color="red"></font>
              </div>
 			 <div>
@@ -31,26 +31,26 @@
 					 </select>
              </div>
 			 <div>
-                    <label for="data">出生日期：</label>
-                    <input type="text" Class="Wdate" id="birthday" name="birthday" value="${user.birthday }"
+                    <label for="birthday">出生日期：</label>
+                    <input type="text" Class="Wdate" id="birthday" name="birthday" value="<fmt:formatDate value='${user.birthday}' pattern='yyyy-MM-dd'/>"
 					readonly="readonly" onclick="WdatePicker();">
                     <font color="red"></font>
               </div>
 			
 		       <div>
-                    <label for="userphone">用户电话：</label>
+                    <label for="phone">用户电话：</label>
                     <input type="text" name="phone" id="phone" value="${user.phone }"> 
                     <font color="red"></font>
                </div>
                 <div>
-                    <label for="userAddress">用户地址：</label>
+                    <label for="address">用户地址：</label>
                     <input type="text" name="address" id="address" value="${user.address }">
                 </div>
 				<div>
                     <label >用户角色：</label>
                     <!-- 列出所有的角色分类 -->
-					<input type="hidden" value="${user.userRole }" id="rid" />
-					<select name="userRole" id="userRole"></select>
+					<input type="hidden" value="${user.userrole }" id="rid" />
+					<select name="userrole" id="userRole"></select>
         			<font color="red"></font>
                 </div>
 			 <div class="providerAddBtn">

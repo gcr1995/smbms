@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Integer pwdModify(User user) {
+    public Integer updateById(User user) {
         return userMapper.updateById(user);
     }
 
@@ -52,5 +52,25 @@ public class UserServiceImpl implements UserService {
         }
         page.setRecords(users);
         return page;
+    }
+
+    @Override
+    public Integer insert(User user) {
+        return userMapper.insert(user);
+    }
+
+    @Override
+    public List<User> selectByUserCode(String userCode) {
+        return userMapper.selectList(new EntityWrapper<User>().eq("userCode", userCode));
+    }
+
+    @Override
+    public User selectById(Long id) {
+        return userMapper.selectById(id);
+    }
+
+    @Override
+    public Integer deleteById(Long id) {
+        return userMapper.deleteById(id);
     }
 }

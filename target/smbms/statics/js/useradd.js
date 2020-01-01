@@ -40,7 +40,7 @@ $(function(){
 				for(var i = 0; i < data.length; i++){
 					//alert(data[i].id);
 					//alert(data[i].roleName);
-					options += "<option value=\""+data[i].id+"\">"+data[i].roleName+"</option>";
+					options += "<option value=\""+data[i].id+"\">"+data[i].rolename+"</option>";
 				}
 				userRole.html(options);
 			}
@@ -71,7 +71,7 @@ $(function(){
 			data:{userCode:code},//请求参数
 			dataType:"json",//ajax接口（请求url）返回的数据类型
 			success:function(data){//data：返回数据（json对象）
-				if(data.userCode == "exist"){//账号已存在，错误提示
+				if(data.usercode == "exist"){//账号已存在，错误提示
 					validateTip(userCode.next(),{"color":"red"},imgNo+ " 该用户账号已存在",false);
 				}else{//账号可用，正确提示
 					validateTip(userCode.next(),{"color":"green"},imgYes+" 该账号可以使用",true);
@@ -112,7 +112,7 @@ $(function(){
 	});
 	
 	ruserPassword.bind("focus",function(){
-		validateTip(ruserPassword.next(),{"color":"#666666"},"* 请输入与上面一只的密码",false);
+		validateTip(ruserPassword.next(),{"color":"#666666"},"* 请输入与上面一致的密码",false);
 	}).bind("blur",function(){
 		if(ruserPassword.val() != null && ruserPassword.val().length > 6
 				&& ruserPassword.val().length < 20 && userPassword.val() == ruserPassword.val()){

@@ -4,7 +4,7 @@ import cn.smbms.pojo.Bill;
 import cn.smbms.pojo.Provider;
 import cn.smbms.service.BillService;
 import cn.smbms.service.ProviderService;
-import cn.smbms.util.BillUtil;
+import cn.smbms.util.DelData;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -49,7 +50,7 @@ public class ProviderController {
     public String providerModifySave(Provider provider) {
         Integer i = providerService.updateById(provider);
         if (i > 0) {
-            return "redirect:/sys/bill";
+            return "redirect:/sys/provider";
         } else {
             return "redirect:/sys/providermodify";
         }
@@ -59,18 +60,18 @@ public class ProviderController {
     @ResponseBody
     public Object delProvider(Long proid) {
         List<Bill> bills = billService.selectByProviderId(proid);
-        BillUtil billUtil = new BillUtil();
+        DelData delData = new DelData();
         if (bills.size() != 0) {
-            billUtil.setDelResult(String.valueOf(bills.size()));
+            delData.setDelResult(String.valueOf(bills.size()));
         } else {
             Integer i = providerService.deleteById(proid);
             if (i > 0) {
-                billUtil.setDelResult("true");
+                delData.setDelResult("true");
             } else {
-                billUtil.setDelResult("false");
+                delData.setDelResult("false");
             }
         }
-        return billUtil;
+        return delData;
     }
 
     @RequestMapping("/provideradd")
@@ -80,6 +81,7 @@ public class ProviderController {
 
     @RequestMapping("/provideraddsave")
     public String doAddprovider(Provider provider) {
+        provider.setCreationdate(new Date());
         Integer i = providerService.insert(provider);
         if (i > 0) {
             return "redirect:/sys/provider";

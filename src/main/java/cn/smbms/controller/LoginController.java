@@ -28,7 +28,7 @@ public class LoginController {
         User user = userService.login(usercode, password);
         if (user != null) {
             session.removeAttribute("error");
-            session.setAttribute("user", user);
+            session.setAttribute("loginUser", user);
             return "redirect:/main.html";
         }
         session.setAttribute("error", "用户名或密码错误");
@@ -42,7 +42,7 @@ public class LoginController {
 
     @RequestMapping("/logout")
     public String logout(HttpSession session) {
-        session.removeAttribute("user");
+        session.invalidate();
         return "redirect:/login";
     }
 }

@@ -32,9 +32,9 @@ $(function(){
 					//alert(data[i].id);
 					//alert(data[i].roleName);
 					if(rid != null && rid != undefined && data[i].id == rid ){
-						options += "<option selected=\"selected\" value=\""+data[i].id+"\" >"+data[i].roleName+"</option>";
+						options += "<option selected=\"selected\" value=\""+data[i].id+"\" >"+data[i].rolename+"</option>";
 					}else{
-						options += "<option value=\""+data[i].id+"\" >"+data[i].roleName+"</option>";
+						options += "<option value=\""+data[i].id+"\" >"+data[i].rolename+"</option>";
 					}
 					
 				}

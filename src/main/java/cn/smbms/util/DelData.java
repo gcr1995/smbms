@@ -3,6 +3,6 @@ package cn.smbms.util;
 import lombok.Data;
 
 @Data
-public class BillUtil {
+public class DelData {
     private String delResult;
 }

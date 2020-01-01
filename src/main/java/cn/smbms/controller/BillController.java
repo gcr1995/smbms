@@ -4,7 +4,7 @@ import cn.smbms.pojo.Bill;
 import cn.smbms.pojo.Provider;
 import cn.smbms.service.BillService;
 import cn.smbms.service.ProviderService;
-import cn.smbms.util.BillUtil;
+import cn.smbms.util.DelData;
 import com.baomidou.mybatisplus.plugins.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -82,6 +83,7 @@ public class BillController {
 
     @RequestMapping("/dobilladd")
     public String doBillAdd(Bill bill) {
+        bill.setCreationdate(new Date());
         Integer i = billService.insert(bill);
         if (i > 0) {
             return "redirect:/sys/bill";
@@ -93,18 +95,18 @@ public class BillController {
     @RequestMapping("billdel")
     @ResponseBody
     public Object billDel(Long billid) {
-        BillUtil billUtil = new BillUtil();
+        DelData delData = new DelData();
         Bill bill = billService.selectById(billid);
         if (bill == null) {
-            billUtil.setDelResult("notexist");
-            return billUtil;
+            delData.setDelResult("notexist");
+            return delData;
         }
         Integer i = billService.deleteById(billid);
         if (i > 0) {
-            billUtil.setDelResult("true");
+            delData.setDelResult("true");
         } else {
-            billUtil.setDelResult("false");
+            delData.setDelResult("false");
         }
-        return billUtil;
+        return delData;
     }
 }

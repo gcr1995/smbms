@@ -1,6 +1,7 @@
 package cn.smbms.pojo;
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -59,6 +60,7 @@ public class Provider implements Serializable {
     /**
      * 创建时间
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date creationdate;
 
     /**
